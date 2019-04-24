@@ -10,12 +10,12 @@ Utilizing its global popularity and name recognition, it is our groups belief th
 
 # Team Members
 
-Thomas Claxton
-Reuben Diaz
-Brandon Kessinger
-Anythony Manalakos
-Ahmed Mohammed
-Aleksander Penev
+Thomas Claxton <br />
+Reuben Diaz <br />
+Brandon Kessinger <br />
+Anythony Manalakos <br />
+Ahmed Mohammed <br />
+Aleksander Penev 
 
 ## Development server
 
