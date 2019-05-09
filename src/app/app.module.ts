@@ -5,10 +5,18 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 
 import { AppComponent } from './app.component';
+import { AboutComponent } from './about/about.component';
+import { MapComponent } from './map/map.component';
+import { HouseComponent } from './house/house.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent,
+    MapComponent,
+    HouseComponent,
+    NavMenuComponent
   ],
   imports: [
     BrowserModule,
