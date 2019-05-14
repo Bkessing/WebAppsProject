@@ -21,6 +21,7 @@ import { AboutComponent } from './about/about.component';
 import { MapComponent } from './map/map.component';
 import { HouseComponent } from './house/house.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     AlertComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    TwitterFeedComponent
   ],
   imports: [
     BrowserModule,
