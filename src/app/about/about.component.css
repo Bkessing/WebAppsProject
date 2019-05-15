@@ -1,0 +1,20 @@
+p {
+    margin-right: 30%;
+    margin-left: 30%;
+    font-size: 20px;
+}
+
+/* individual member descriptions */
+.description {
+    text-align: center;
+}
+
+/* the team member images */
+img {
+    border-radius: 50%;
+}
+
+/* team member names */
+.caption {
+    font-size: 25px;
+}
