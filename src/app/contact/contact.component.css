@@ -1,0 +1,12 @@
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    border: 3px black;
+  }
+  
+  .contact-container > * {
+    width: 50%;
+    border: 3px black;
+    text-align: center;
+
+  }
