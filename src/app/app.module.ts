@@ -22,6 +22,10 @@ import { MapComponent } from './map/map.component';
 import { HouseComponent } from './house/house.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
+import { StarkComponent } from './stark/stark.component';
+import { TargaryenComponent } from './targaryen/targaryen.component';
+import { LannisterComponent } from './lannister/lannister.component';
+import { GreyjoyComponent } from './greyjoy/greyjoy.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    TwitterFeedComponent
+    TwitterFeedComponent,
+    StarkComponent,
+    TargaryenComponent,
+    LannisterComponent,
+    GreyjoyComponent
   ],
   imports: [
     BrowserModule,

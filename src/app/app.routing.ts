@@ -2,6 +2,10 @@
 
 import { MapComponent } from './map/map.component';
 import { HouseComponent } from './house/house.component';
+import { StarkComponent } from './stark/stark.component';
+import { TargaryenComponent } from './targaryen/targaryen.component';
+import { LannisterComponent } from './lannister/lannister.component';
+import { GreyjoyComponent } from './greyjoy/greyjoy.component';
 // CharacterComponent not yet implemented
 // import { CharacterComponent } from ./character/character.component';
 import { AboutComponent } from './about/about.component';
@@ -21,6 +25,10 @@ const routes: Routes = [
     // { path: 'contact', component: ContactComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'stark', component: StarkComponent },
+    { path: 'lannister', component: LannisterComponent },
+    { path: 'targaryen', component: TargaryenComponent },
+    { path: 'greyjoy', component: GreyjoyComponent },
     
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
