@@ -15,13 +15,14 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { HomeComponent } from './home';
 import { AuthGuard } from './_guards';
+import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'map', component: MapComponent },
     { path: 'house', component: HouseComponent },
     // { path: 'characters', component: CharacterComponent },
-    { path: 'about', component: AboutComponent },
+    { path: 'about', component: AboutComponent},
     // { path: 'contact', component: ContactComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
