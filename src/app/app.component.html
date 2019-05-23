@@ -6,6 +6,13 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
   <!-- <img width="300" alt="Logo" src="assets/logo.png"/> -->
   <h2>Current testing space </h2>
   <app-twitter-feed></app-twitter-feed>
