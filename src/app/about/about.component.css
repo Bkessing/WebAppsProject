@@ -19,5 +19,7 @@ img {
     font-size: 25px;
 }
 
-.tweets {text-align: left;
-}
+#container{width:100%;}
+#left{float:left;width:20%;margin-left:1%}
+#right{float:right;width:100px;}
+#center{margin:0 auto;width:50%;}

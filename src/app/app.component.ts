@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
@@ -9,7 +9,7 @@ import { User } from './_models';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent{
   title = 'Web of Thrones';
   currentUser: User;
 
@@ -24,9 +24,7 @@ export class AppComponent implements AfterViewInit{
         this.authenticationService.logout();
         this.router.navigate(['/login']);
     }
+  
 
-  ngAfterViewInit(): void{
-    // @ts-ignore
-    twttr.widgets.load();
-  }
+  
 }
