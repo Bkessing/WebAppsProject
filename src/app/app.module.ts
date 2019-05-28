@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -27,6 +31,8 @@ import { StarkComponent } from './stark/stark.component';
 import { TargaryenComponent } from './targaryen/targaryen.component';
 import { LannisterComponent } from './lannister/lannister.component';
 import { GreyjoyComponent } from './greyjoy/greyjoy.component';
+import { ContactComponent } from './contact/contact.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +50,8 @@ import { GreyjoyComponent } from './greyjoy/greyjoy.component';
     StarkComponent,
     TargaryenComponent,
     LannisterComponent,
-    GreyjoyComponent
+    GreyjoyComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +60,11 @@ import { GreyjoyComponent } from './greyjoy/greyjoy.component';
     MatCheckboxModule,
     ReactiveFormsModule,
     HttpClientModule,
-    routing
+    routing,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
