@@ -31,7 +31,7 @@ import { StarkComponent } from './stark/stark.component';
 import { TargaryenComponent } from './targaryen/targaryen.component';
 import { LannisterComponent } from './lannister/lannister.component';
 import { GreyjoyComponent } from './greyjoy/greyjoy.component';
-import { ContactComponent } from './contact/contact.component';
+
 
 
 @NgModule({
