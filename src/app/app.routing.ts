@@ -17,7 +17,7 @@ import { AuthGuard } from './_guards';
 import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: '', component: MapComponent },
     { path: 'map', component: MapComponent },
     { path: 'house', component: HouseComponent },
     // { path: 'characters', component: CharacterComponent },
