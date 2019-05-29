@@ -1,12 +1,12 @@
 
 
-<form class="contact-form">
+<form class="contact-form" [formGroup]="options" [style.fontSize.px]="getFontSize()">
   <mat-form-field class="contact-full-width">
-    <input matInput placeholder="Email" >
+    <input matInput placeholder="Email">
   </mat-form-field>
 
   <mat-form-field class="contact-full-width">
-    <textarea matInput placeholder="Leave a message"></textarea>
+    <textarea matInput placeholder="Leave a message" rows="10"></textarea>
   </mat-form-field>
 </form>
 
