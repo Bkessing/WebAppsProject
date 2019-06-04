@@ -31,6 +31,8 @@ import { StarkComponent } from './stark/stark.component';
 import { TargaryenComponent } from './targaryen/targaryen.component';
 import { LannisterComponent } from './lannister/lannister.component';
 import { GreyjoyComponent } from './greyjoy/greyjoy.component';
+import { CastleBlackComponent } from './castle-black/castle-black.component';
+import { MartellComponent } from './martell/martell.component';
 
 
 
@@ -51,7 +53,9 @@ import { GreyjoyComponent } from './greyjoy/greyjoy.component';
     TargaryenComponent,
     LannisterComponent,
     GreyjoyComponent,
-    ContactComponent
+    ContactComponent,
+    CastleBlackComponent,
+    MartellComponent
   ],
   imports: [
     BrowserModule,
