@@ -32,6 +32,8 @@ import { TargaryenComponent } from './targaryen/targaryen.component';
 import { LannisterComponent } from './lannister/lannister.component';
 import { GreyjoyComponent } from './greyjoy/greyjoy.component';
 import { FacebookFeedComponent } from './facebook-feed/facebook-feed.component';
+import { BaratheonComponent } from './baratheon/baratheon.component';
+import { TyrellComponent } from './tyrell/tyrell.component';
 
 
 
@@ -53,7 +55,9 @@ import { FacebookFeedComponent } from './facebook-feed/facebook-feed.component';
     LannisterComponent,
     GreyjoyComponent,
     ContactComponent,
-    FacebookFeedComponent
+    FacebookFeedComponent,
+    BaratheonComponent,
+    TyrellComponent
   ],
   imports: [
     BrowserModule,
