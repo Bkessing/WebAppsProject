@@ -34,6 +34,7 @@ import { GreyjoyComponent } from './greyjoy/greyjoy.component';
 import { BaratheonComponent } from './baratheon/baratheon.component';
 import { CastleBlackComponent } from './castle-black/castle-black.component';
 import { FacebookFeedComponent } from './facebook-feed/facebook-feed.component';
+import { TyrellComponent } from './tyrell/tyrell.component';
 import { MartellComponent } from './martell/martell.component';
 
 
@@ -59,7 +60,8 @@ import { MartellComponent } from './martell/martell.component';
     CastleBlackComponent,
     MartellComponent,
     ContactComponent,
-    FacebookFeedComponent
+    FacebookFeedComponent,
+    TyrellComponent
   ],
   imports: [
     BrowserModule,
