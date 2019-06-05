@@ -61,7 +61,6 @@ import { MartellComponent } from './martell/martell.component';
     MartellComponent,
     ContactComponent,
     FacebookFeedComponent,
-    BaratheonComponent,
     TyrellComponent
   ],
   imports: [
