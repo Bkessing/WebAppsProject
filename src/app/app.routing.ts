@@ -15,9 +15,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { HomeComponent } from './home';
 import { AuthGuard } from './_guards';
-import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
 
 const routes: Routes = [
     { path: '', component: MapComponent },

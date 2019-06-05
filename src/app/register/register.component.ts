@@ -1,13 +1,13 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AlertService, UserService, AuthenticationService } from '@app/_services';
 
 @Component({templateUrl: 'register.component.html',
             selector: 'app-register',
             styleUrls: ['register.component.css']})
+
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;

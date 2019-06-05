@@ -1,4 +1,15 @@
-input{
+/* input{
     margin: 0 auto;
     width: 200px;
+} */
+
+.login-form {
+    margin: 0 auto;
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.login-full-width {
+    width: 100%;
 }
