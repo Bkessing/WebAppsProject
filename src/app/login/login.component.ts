@@ -1,17 +1,25 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthenticationService } from '@app/_services';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({templateUrl: 'login.component.html',
             selector: 'app-login',
             styleUrls: ['login.component.css']})
 export class LoginComponent implements OnInit {
     public loginForm: FormGroup;
+    public snackbarDurationInSeconds: number = 3;
 
     constructor(
+        public snackbar: MatSnackBar,
         private authService: AuthenticationService,
     ) { }
+
+    openLoginSnackbar(message: string, action: string) {
+        this.snackbar.open(message, action, {
+            duration: this.snackbarDurationInSeconds * 1000,
+        });
+    }
 
     ngOnInit() {
         this.loginForm = new FormGroup({
@@ -29,10 +37,11 @@ export class LoginComponent implements OnInit {
 
     /* Execute login on backend */
     public executeLogin(loginFormValue) {
+        /* Mock user until we connect firebase */ 
         if (loginFormValue.username == 'admin' && loginFormValue.password == 'admin000') {
-            alert('Login Successful!!');
+            this.openLoginSnackbar('Login Successful!', '');
         } else {
-            alert('Login Failed!!');
+            this.openLoginSnackbar('Login Failed!', '');
         }
     }
 }

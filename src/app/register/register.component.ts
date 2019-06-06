@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { AlertService, UserService, AuthenticationService } from '@app/_services';
+import { AuthenticationService } from '@app/_services';
+import { MatSnackBar } from '@angular/material';
 
 @Component({templateUrl: 'register.component.html',
             selector: 'app-register',
@@ -8,10 +9,18 @@ import { AlertService, UserService, AuthenticationService } from '@app/_services
 
 export class RegisterComponent implements OnInit {
     public registerForm: FormGroup;
+    public snackbarDurationInSeconds: number = 3;
 
     constructor(
+        public snackbar: MatSnackBar,
         private authService: AuthenticationService,
     ) { }
+
+    openRegisterSnackbar(message: string, action: string) {
+        this.snackbar.open(message, action, {
+            duration: this.snackbarDurationInSeconds * 1000,
+        });
+    }
 
     ngOnInit() {
         this.registerForm = new FormGroup({
@@ -29,13 +38,13 @@ export class RegisterComponent implements OnInit {
 
     /* Make sure form is valid */
     public checkRegister(registerFormValue) {
-        // if (this.registerForm.valid) {
+        if (this.registerForm.valid) {
             this.executeRegister(registerFormValue);
-        // }
+        }
     }
 
     /* Execute registration on backend */
     public executeRegister(registerFormValue) {
-        alert('Registration Successful!!');
+        this.openRegisterSnackbar('Account registered successfully!', '');
     }
 }
