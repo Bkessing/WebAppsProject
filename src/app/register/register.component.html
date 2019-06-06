@@ -36,6 +36,25 @@
     </div>
 </form> -->
 
-<mat-card class="my-card">
+<mat-card>
+    <mat-card-content>
+        <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="register-full-width">
+                <input matInput placeholder="First name" name="firstName" required>
+             </mat-form-field>
+             <mat-form-field class="register-full-width">
+                <input matInput placeholder="Last Name" name="lastName" required>
+             </mat-form-field>
+             <mat-form-field class="register-full-width">
+                <input matInput placeholder="Username" name="username" required>
+             </mat-form-field>
+             <mat-form-field class="register-full-width">
+                <input type="password" matInput placeholder="Password" name="password">
+             </mat-form-field>
+        </form>
+    </mat-card-content>
 
+    <mat-card-actions>
+        <button mat-raised-button (click)="onSubmit()" color="primary">REGISTER</button>
+    </mat-card-actions>
 </mat-card>
