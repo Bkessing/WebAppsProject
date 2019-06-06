@@ -1,63 +1,38 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
-import { AlertService, AuthenticationService } from '@app/_services';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '@app/_services';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({templateUrl: 'login.component.html',
             selector: 'app-login',
             styleUrls: ['login.component.css']})
 export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
-    loading = false;
-    submitted = false;
-    returnUrl: string;
+    public loginForm: FormGroup;
 
     constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private alertService: AlertService
-    ) {
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
-    }
+        private authService: AuthenticationService,
+    ) { }
 
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
-
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.loginForm = new FormGroup({
+            username: new FormControl('', Validators.required),
+            password: new FormControl('', Validators.required)
+        })
     }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
-
-    onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
+    /* Make sure form is valid */
+    public checkLogin(loginFormValue) {
+        if (this.loginForm.valid) {
+            this.executeLogin(loginFormValue);
         }
+    }
 
-        this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+    /* Execute login on backend */
+    public executeLogin(loginFormValue) {
+        if (loginFormValue.username == 'admin' && loginFormValue.password == 'admin000') {
+            alert('Login Successful!!');
+        } else {
+            alert('Login Failed!!');
+        }
     }
 }

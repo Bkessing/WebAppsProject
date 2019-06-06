@@ -1,7 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AlertService, UserService, AuthenticationService } from '@app/_services';
 
 @Component({templateUrl: 'register.component.html',
@@ -9,54 +7,35 @@ import { AlertService, UserService, AuthenticationService } from '@app/_services
             styleUrls: ['register.component.css']})
 
 export class RegisterComponent implements OnInit {
-    registerForm: FormGroup;
-    loading = false;
-    submitted = false;
+    public registerForm: FormGroup;
 
     constructor(
-        private formBuilder: FormBuilder,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private userService: UserService,
-        private alertService: AlertService
-    ) { 
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
-    }
+        private authService: AuthenticationService,
+    ) { }
 
     ngOnInit() {
-        this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+        this.registerForm = new FormGroup({
+            firstName: new FormControl('', Validators.required),
+            lastName: new FormControl('', Validators.required),
+            username: new FormControl('', Validators.required),
+            password: new FormControl('', [Validators.required, Validators.minLength(6)])
+        })
     }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+    /* Return any errors present in the register form */
+    public hasError(controlName: string, errorName: string) {
+        return this.registerForm.controls[controlName].hasError(errorName);
+    }
 
-    onSubmit() {
-        this.submitted = true;
+    /* Make sure form is valid */
+    public checkRegister(registerFormValue) {
+        // if (this.registerForm.valid) {
+            this.executeRegister(registerFormValue);
+        // }
+    }
 
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+    /* Execute registration on backend */
+    public executeRegister(registerFormValue) {
+        alert('Registration Successful!!');
     }
 }
