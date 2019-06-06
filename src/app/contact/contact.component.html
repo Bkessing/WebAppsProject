@@ -1,13 +1,18 @@
+<div class="card-container">
+  <mat-card class="contact-card">
+    <mat-card-title>Contact Us</mat-card-title>
+    <form class="contact-form" (ngSubmit)="sendMessage()" [formGroup]="options" [style.fontSize.px]="getFontSize()">
+      <mat-form-field class="contact-full-width">
+        <input matInput placeholder="Email">
+      </mat-form-field>
 
+      <mat-form-field class="contact-full-width">
+        <textarea matInput placeholder="Leave a message" rows="10"></textarea>
+      </mat-form-field>
 
-<form class="contact-form" [formGroup]="options" [style.fontSize.px]="getFontSize()">
-  <mat-form-field class="contact-full-width">
-    <input matInput placeholder="Email">
-  </mat-form-field>
-
-  <mat-form-field class="contact-full-width">
-    <textarea matInput placeholder="Leave a message" rows="10"></textarea>
-  </mat-form-field>
-</form>
-
-
+      <button mat-fab class="send-fab">
+          <mat-icon>send</mat-icon>
+        </button>
+    </form>
+  </mat-card>
+</div>
