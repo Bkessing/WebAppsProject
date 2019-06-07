@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = new FormGroup({
-            username: new FormControl('', Validators.required),
+            email: new FormControl('', Validators.required),
             password: new FormControl('', Validators.required)
         })
     }
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     /* Execute login on backend */
     public executeLogin(loginFormValue) {
         /* Mock user until we connect firebase */ 
-        if (loginFormValue.username == 'admin' && loginFormValue.password == 'admin000') {
+        if (loginFormValue.email == 'admin' && loginFormValue.password == 'admin000') {
             this.openLoginSnackbar('Login Successful!', '');
         } else {
             this.openLoginSnackbar('Login Failed!', '');
