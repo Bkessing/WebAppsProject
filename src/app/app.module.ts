@@ -1,26 +1,18 @@
+import { MaterialModule } from './material.module';
+/* All material imports are contained in the above import from /material.module.ts  */
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { fakeBackendProvider } from './_helpers';
-
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
-
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-
 import { AboutComponent } from './about/about.component';
 import { MapComponent } from './map/map.component';
 import { ContactComponent} from './contact/contact.component';
@@ -34,9 +26,8 @@ import { GreyjoyComponent } from './greyjoy/greyjoy.component';
 import { BaratheonComponent } from './baratheon/baratheon.component';
 import { CastleBlackComponent } from './castle-black/castle-black.component';
 import { FacebookFeedComponent } from './facebook-feed/facebook-feed.component';
+import { TyrellComponent } from './tyrell/tyrell.component';
 import { MartellComponent } from './martell/martell.component';
-
-
 
 @NgModule({
   declarations: [
@@ -47,7 +38,6 @@ import { MartellComponent } from './martell/martell.component';
     HouseComponent,
     NavMenuComponent,
     AlertComponent,
-    HomeComponent,
     LoginComponent,
     RegisterComponent,
     TwitterFeedComponent,
@@ -59,19 +49,16 @@ import { MartellComponent } from './martell/martell.component';
     CastleBlackComponent,
     MartellComponent,
     ContactComponent,
-    FacebookFeedComponent
+    FacebookFeedComponent,
+    TyrellComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
     ReactiveFormsModule,
     HttpClientModule,
     routing,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
+    MaterialModule,
     FormsModule
   ],
   providers: [
@@ -82,4 +69,5 @@ import { MartellComponent } from './martell/martell.component';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

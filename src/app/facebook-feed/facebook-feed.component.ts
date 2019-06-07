@@ -10,6 +10,7 @@ export class FacebookFeedComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
