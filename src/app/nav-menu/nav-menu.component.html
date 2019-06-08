@@ -3,6 +3,18 @@
     <a routerLink="/"> <img src="assets/web.png" width="200" class="logo"> </a>
     <a mat-button routerLink="/map">Map</a>
     <a mat-button routerLink="/house">Houses</a>
+    
+    <button mat-button [matMenuTriggerFor]="menu">Families</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Stark</button>
+      <button mat-menu-item>Greyjoy</button>
+      <button mat-menu-item>Lannister</button>
+      <button mat-menu-item>Castle Black</button>
+      <button mat-menu-item>Martell</button>
+      <button mat-menu-item>Baratheon</button>
+      <button mat-menu-item>Targaryen</button>
+    </mat-menu>
+
     <a mat-button routerLink="/about">About</a>
     <a mat-button routerLink="/contact">Contact</a>
     <span class="fill-space"></span>
