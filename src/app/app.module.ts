@@ -2,6 +2,11 @@ import { MaterialModule } from './material.module';
 /* All material imports are contained in the above import from /material.module.ts  */
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AuthService } from '@app/auth.service';
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule }    from '@angular/forms';
@@ -28,6 +33,7 @@ import { CastleBlackComponent } from './castle-black/castle-black.component';
 import { FacebookFeedComponent } from './facebook-feed/facebook-feed.component';
 import { TyrellComponent } from './tyrell/tyrell.component';
 import { MartellComponent } from './martell/martell.component';
+import { environment } from '@environments/environment';
 
 @NgModule({
   declarations: [
@@ -59,13 +65,16 @@ import { MartellComponent } from './martell/martell.component';
     HttpClientModule,
     routing,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-        fakeBackendProvider
+        fakeBackendProvider,
+        AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,9 @@
 ﻿<mat-card class="login-card">
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
-        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="checkLogin(loginForm.value)">
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="tryLogin(loginForm.value)">
             <mat-form-field class="login-full-width">
-                <input matInput placeholder="Email" type="text" formControlName="email">
+                <input matInput placeholder="Email" type="text" formControlName="email" spellcheck="false">
             </mat-form-field>   
 
             <mat-form-field class="login-full-width">
