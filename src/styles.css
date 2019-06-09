@@ -1,23 +1,4 @@
-
-
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
-/*
-li a {
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-*/
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
