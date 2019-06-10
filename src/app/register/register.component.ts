@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { AuthenticationService } from '@app/_services';
 import { MatSnackBar } from '@angular/material';
+import { AuthService } from '@app/auth.service';
 
 @Component({templateUrl: 'register.component.html',
             selector: 'app-register',
@@ -12,8 +12,8 @@ export class RegisterComponent implements OnInit {
     public snackbarDurationInSeconds: number = 3;
 
     constructor(
+        public authService: AuthService,
         public snackbar: MatSnackBar,
-        private authService: AuthenticationService,
     ) { }
 
     openRegisterSnackbar(message: string, action: string) {
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
         this.registerForm = new FormGroup({
             firstName: new FormControl('', Validators.required),
             lastName: new FormControl('', Validators.required),
-            username: new FormControl('', Validators.required),
+            email: new FormControl('', Validators.required),
             password: new FormControl('', [Validators.required, Validators.minLength(6)])
         })
     }
@@ -36,15 +36,17 @@ export class RegisterComponent implements OnInit {
         return this.registerForm.controls[controlName].hasError(errorName);
     }
 
-    /* Make sure form is valid */
-    public checkRegister(registerFormValue) {
+    /* Execute registration on Firebase */
+    public tryRegister(registerFormValue) {
         if (this.registerForm.valid) {
-            this.executeRegister(registerFormValue);
+            this.authService.register(registerFormValue)
+            .then(res => {
+                /* Show success notif */
+                this.openRegisterSnackbar('Account registered successfully!', '');
+            }, err => {
+                // console.log(err);
+                this.openRegisterSnackbar(err.message, '');
+            })
         }
-    }
-
-    /* Execute registration on backend */
-    public executeRegister(registerFormValue) {
-        this.openRegisterSnackbar('Account registered successfully!', '');
     }
 }

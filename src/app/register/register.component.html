@@ -1,7 +1,7 @@
 ﻿<mat-card class="register-card">
     <mat-card-title>Register</mat-card-title>
     <mat-card-content>
-        <form class="register-form" [formGroup]="registerForm" (ngSubmit)="checkRegister(registerForm.Value)">
+        <form class="register-form" [formGroup]="registerForm" (ngSubmit)="tryRegister(registerForm.value)">
             <mat-form-field class="register-full-width">
                 <input matInput type="text" placeholder="First Name" formControlName="firstName">
              </mat-form-field>
@@ -11,7 +11,7 @@
              </mat-form-field>
 
              <mat-form-field class="register-full-width">
-                <input matInput type="text" placeholder="Username" formControlName="username">
+                <input matInput type="text" placeholder="Email" formControlName="email">
              </mat-form-field>
 
              <mat-form-field class="register-full-width">

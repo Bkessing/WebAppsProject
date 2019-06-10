@@ -1,7 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '@app/_services';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+import { AuthService } from '@app/auth.service';
+import { Router } from '@angular/router';
 
 @Component({templateUrl: 'login.component.html',
             selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
 
     constructor(
         public snackbar: MatSnackBar,
-        private authService: AuthenticationService,
+        public authService: AuthService,
+        private router: Router,
     ) { }
 
     openLoginSnackbar(message: string, action: string) {
@@ -23,25 +25,25 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = new FormGroup({
-            username: new FormControl('', Validators.required),
+            email: new FormControl('', Validators.required),
             password: new FormControl('', Validators.required)
         })
     }
 
-    /* Make sure form is valid */
-    public checkLogin(loginFormValue) {
-        if (this.loginForm.valid) {
-            this.executeLogin(loginFormValue);
-        }
-    }
-
-    /* Execute login on backend */
-    public executeLogin(loginFormValue) {
+    /* Try to execute login on backend */
+    public tryLogin(loginFormValue) {
         /* Mock user until we connect firebase */ 
-        if (loginFormValue.username == 'admin' && loginFormValue.password == 'admin000') {
-            this.openLoginSnackbar('Login Successful!', '');
-        } else {
-            this.openLoginSnackbar('Login Failed!', '');
+        if (this.loginForm.valid) { 
+            this.authService.login(loginFormValue)
+            .then(res => {
+                /* Show success notif */
+                this.openLoginSnackbar('Login successful!', '');
+                this.router.navigateByUrl('/map');
+                
+            }, err => {
+                // console.log(err);
+                this.openLoginSnackbar(err.message, '');
+            })
         }
     }
 }
