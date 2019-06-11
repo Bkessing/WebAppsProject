@@ -6,13 +6,13 @@
     
     <button mat-button [matMenuTriggerFor]="menu">Families</button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Stark</button>
-      <button mat-menu-item>Greyjoy</button>
-      <button mat-menu-item>Lannister</button>
-      <button mat-menu-item>Castle Black</button>
-      <button mat-menu-item>Martell</button>
-      <button mat-menu-item>Baratheon</button>
-      <button mat-menu-item>Targaryen</button>
+      <button mat-menu-item routerLink="/stark" routerLinkActive="active">Stark</button>
+      <button mat-menu-item routerLink="/greyjoy" routerLinkActive="active">Greyjoy</button>
+      <button mat-menu-item routerLink="/lannister" routerLinkActive="active">Lannister</button>
+      <button mat-menu-item routerLink="/castle-black" routerLinkActive="active">Castle Black</button >
+      <button mat-menu-item routerLink="/martell" routerLinkActive="active">Martell</button>
+      <button mat-menu-item routerLink="/baratheon" routerLinkActive="active">Baratheon</button>
+      <button mat-menu-item routerLink="/targaryen" routerLinkActive="active">Targaryen</button>
     </mat-menu>
 
     <a mat-button routerLink="/about">About</a>
