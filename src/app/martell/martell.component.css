@@ -1,0 +1,32 @@
+@font-face {
+    font-family: GameOfThrones;
+    src: url("src/assets/GameOfThrones.ttf");
+}
+
+.titleText {
+    padding-top: 5px;
+    font-family: GameOfThrones;
+    color: rgb(187, 187, 187);
+}
+
+
+
+.desc { 
+    font-family: Bad Script;
+    color: azure;
+    font-size: 20px;
+    padding: 4em;
+    margin-left: 20em;
+    margin-right: 20em;
+    margin-bottom: 5em;
+}
+
+.img-frame {
+    background:transparent;
+    padding:8px;
+    border:1px solid #999999; 
+}
+
+body {
+    background-color: rgb(51, 52, 133); 
+}
