@@ -1,34 +1,26 @@
-<!DOCTYPE html>
-<html>
+<mat-toolbar color="" class="fixed-header">
+  <mat-toolbar-row>
+    <a routerLink="/"> <img src="assets/web.png" width="200" class="logo"> </a>
+    <a mat-button routerLink="/map">Map</a>
+    <a mat-button routerLink="/house">Houses</a>
+    
+    <button mat-button [matMenuTriggerFor]="menu">Families</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Stark</button>
+      <button mat-menu-item>Greyjoy</button>
+      <button mat-menu-item>Lannister</button>
+      <button mat-menu-item>Castle Black</button>
+      <button mat-menu-item>Martell</button>
+      <button mat-menu-item>Baratheon</button>
+      <button mat-menu-item>Targaryen</button>
+    </mat-menu>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
+    <a mat-button routerLink="/about">About</a>
+    <a mat-button routerLink="/contact">Contact</a>
+    <span class="fill-space"></span>
+    <a mat-button routerLink="/login">Login</a>
+    <a mat-button routerLink="/register">Register</a>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<body>
-	<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header" fixed-top>
-      <a class="navbar-brand" href="#"> <img class="banner" width="200" src="assets/web.png"> </a>
-    </div>
-    <ul class="nav navbar-nav ml-auto">
-      <li> <a routerLink="/map" routerLinkActive="active"> Map </a> </li>
-      <li> <a routerLink="/house" routerLinkActive="active"> Houses </a> </li>
-      <li> <a routerLink="/about" routerLinkActive="active"> About </a> </li>
-      <li> <a routerLink="/contact" routerLinkActive="active"> Contact </a> </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-    	<li> <a routerLink="/login" routerLinkActive="active"> Login </a> </li>
-    	<li> <a routerLink="/register" routerLinkActive="active"> Register </a> </li>
-    </ul>
-  </div>
-  </nav>
-</body>
-
-<!-- Mark this page as the router for Angular -->
 <router-outlet></router-outlet>
-</html>

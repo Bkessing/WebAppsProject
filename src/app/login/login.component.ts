@@ -1,63 +1,49 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
-import { AlertService, AuthenticationService } from '@app/_services';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { AuthService } from '@app/auth.service';
+import { Router } from '@angular/router';
 
 @Component({templateUrl: 'login.component.html',
             selector: 'app-login',
             styleUrls: ['login.component.css']})
 export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
-    loading = false;
-    submitted = false;
-    returnUrl: string;
+    public loginForm: FormGroup;
+    public snackbarDurationInSeconds: number = 3;
 
     constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
+        public snackbar: MatSnackBar,
+        public authService: AuthService,
         private router: Router,
-        private authenticationService: AuthenticationService,
-        private alertService: AlertService
-    ) {
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
+    ) { }
+
+    openLoginSnackbar(message: string, action: string) {
+        this.snackbar.open(message, action, {
+            duration: this.snackbarDurationInSeconds * 1000,
+        });
     }
 
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
-
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.loginForm = new FormGroup({
+            email: new FormControl('', Validators.required),
+            password: new FormControl('', Validators.required)
+        })
     }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
-
-    onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
+    /* Try to execute login on backend */
+    public tryLogin(loginFormValue) {
+        /* Mock user until we connect firebase */ 
+        if (this.loginForm.valid) { 
+            this.authService.login(loginFormValue)
+            .then(res => {
+                /* Show success notif */
+                this.openLoginSnackbar('Login successful!', '');
+                this.router.navigateByUrl('/map');
+                
+            }, err => {
+                // console.log(err);
+                this.openLoginSnackbar(err.message, '');
+            })
         }
-
-        this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
     }
 }

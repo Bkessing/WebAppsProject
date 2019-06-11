@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-contact',
@@ -8,10 +9,19 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   options: FormGroup;
+  teamEmail: string = 'webofthrones@gmail.com';
+  snackbarDurationInSeconds: number = 3;
 
-  constructor(fb: FormBuilder) { 
+  constructor(fb: FormBuilder, public snackbar: MatSnackBar) { 
     this.options = fb.group({
       fontSize: [16, Validators.min(10)],
+    });
+
+  }
+
+  openContactSnackbar(message: string, action: string) {
+    this.snackbar.open(message, action, {
+      duration: this.snackbarDurationInSeconds * 1000,
     });
   }
 
@@ -20,6 +30,11 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  sendMessage() {
+    /* This'll be filled in with a function to send the message typed to teamEmail */
+    this.openContactSnackbar('Message sent!', '');
   }
 
 }
