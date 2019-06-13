@@ -1,10 +1,12 @@
-<h1> About Us </h1>
-
-<div id="container">
-
-     <div id="left">
-         <app-twitter-feed></app-twitter-feed>
-     </div>
+<!-- <h1> About Us </h1>
+<div id ="container">
+    <div id="left">
+        <app-twitter-feed></app-twitter-feed>
+    </div>
+    <div id = "right">
+        <app-facebook-feed></app-facebook-feed>
+    </div>
+    
 
     <div id="center">
         <p class="about"> We are a group of students at DePaul University. This is our project for CSC 360 (Web Applications). 
@@ -86,6 +88,40 @@
             Aliquam nec malesuada lectus, dapibus cursus sapien.
         </p> <br> <br>
     </div>
+</div> -->
 
 
-</div>
+<mat-card class="about-team-card">
+    <mat-card-title>About Us</mat-card-title>
+    <mat-card-content>
+        We are a group of students at DePaul University. This is our project for CSC 360 (Web Applications). 
+        It was created using the Angular Framework with Material.
+        You can view the source on <a href="https://github.com/Bkessing/WebAppsProject/">GitHub</a>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="about-members-card" color="warn">
+    <mat-card-title>The Team</mat-card-title>
+    <mat-card-content>
+        <mat-card class="member-card">
+            <mat-card-content>
+                <img width="100" alt="team member" src="assets/default_dude.jpg">
+                <div class="caption"> Brandon Kessinger </div>
+            </mat-card-content>
+        </mat-card>
+    </mat-card-content>
+</mat-card>
+
+
+<mat-card class="about-members-card" color="warn">
+    <mat-card-title>The Team</mat-card-title>
+    <mat-card-content>
+        <mat-card class="member-card">
+            <mat-card-content>
+                <img width="100" alt="team member" src="assets/default_dude.jpg">
+                <div class="caption"> Aleksandar Penev </div>
+                <div class="description"> Just a guy who likes to do things</div>
+            </mat-card-content>
+        </mat-card>
+    </mat-card-content>
+</mat-card>

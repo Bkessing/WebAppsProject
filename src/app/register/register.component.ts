@@ -1,62 +1,52 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
-import { AlertService, UserService, AuthenticationService } from '@app/_services';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { AuthService } from '@app/auth.service';
 
 @Component({templateUrl: 'register.component.html',
             selector: 'app-register',
             styleUrls: ['register.component.css']})
+
 export class RegisterComponent implements OnInit {
-    registerForm: FormGroup;
-    loading = false;
-    submitted = false;
+    public registerForm: FormGroup;
+    public snackbarDurationInSeconds: number = 3;
 
     constructor(
-        private formBuilder: FormBuilder,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private userService: UserService,
-        private alertService: AlertService
-    ) { 
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
-    }
+        public authService: AuthService,
+        public snackbar: MatSnackBar,
+    ) { }
 
-    ngOnInit() {
-        this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+    openRegisterSnackbar(message: string, action: string) {
+        this.snackbar.open(message, action, {
+            duration: this.snackbarDurationInSeconds * 1000,
         });
     }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+    ngOnInit() {
+        this.registerForm = new FormGroup({
+            firstName: new FormControl('', Validators.required),
+            lastName: new FormControl('', Validators.required),
+            email: new FormControl('', Validators.required),
+            password: new FormControl('', [Validators.required, Validators.minLength(6)])
+        })
+    }
 
-    onSubmit() {
-        this.submitted = true;
+    /* Return any errors present in the register form */
+    public hasError(controlName: string, errorName: string) {
+        return this.registerForm.controls[controlName].hasError(errorName);
+    }
 
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
+    /* Execute registration on Firebase */
+    public tryRegister(registerFormValue) {
+        if (this.registerForm.valid) {
+            this.authService.register(registerFormValue)
+            .then(res => {
+                /* Show success notif */
+                this.openRegisterSnackbar('Account registered successfully!', '');
+            }, err => {
+                // console.log(err);
+                this.openRegisterSnackbar(err.message, '');
+            })
         }
-
-        this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
     }
 }
