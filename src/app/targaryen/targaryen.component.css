@@ -7,3 +7,10 @@ img {
   margin-right: auto;
   width: 40%;
 }
+
+body {
+  background-image: url(src\assets\dragon.png);
+  background-position: center right; 
+  background-color: black;
+  background-repeat: no-repeat;
+}
