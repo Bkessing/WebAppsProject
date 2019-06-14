@@ -1,0 +1,29 @@
+
+div.container{
+
+  position: relative;
+  bottom: 20;
+  right: 10;
+  width: 500px;
+  text-align: center;
+  margin: 0;
+  top: 50%;
+  left: 30%;
+  
+}
+p{
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  font-weight: bold;
+  position: center;
+}
+
+h4 {
+	bottom: 10;
+	font-family: fantasy;
+	letter-spacing: 2px;
+}
+
+h2{
+	font-family: palatino;
+}
