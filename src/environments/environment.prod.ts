@@ -8,6 +8,6 @@ export const environment = {
     storageBucket: "webapps-ed273.appspot.com",
     messagingSenderId: "1030103240616",
     appId: "1:1030103240616:web:1914fe587d201039"
- },
- apiUrl: 'http://localhost:4200'
+  },
+  apiUrl: 'http://localhost:4200'
 };
